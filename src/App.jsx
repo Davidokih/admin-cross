@@ -14,15 +14,16 @@ import AdminOtp from "./Components/Admin/AdminOtp"
 const App = () => {
   return (
     <div>
-      <Routes>
+      <h1>Hello world</h1>
+      {/* <Routes>
         <Route path="/" element={ <SignInAdmin />} />
         <Route path="/admin-dashboard/*" element={ <AdminPrivate><AdminRoutePage /></AdminPrivate>} />
-        {/* <Route path="/seller-page" element={ <LandingPage />} />
-        <Route path="/seller-dashboard/*" element={ <Private><SellerRouting /></Private>} /> */}
+        <Route path="/seller-page" element={ <LandingPage />} />
+        <Route path="/seller-dashboard/*" element={ <Private><SellerRouting /></Private>} />
         <Route path="/login-admin" element={ <SignInAdmin /> } />
         <Route path="/signup-admin" element={ <SignUpAdmin /> } />
         <Route path="/otp-admin" element={ <AdminOtp /> } />
-      </Routes>
+      </Routes> */}
     </div>
   );
 };
