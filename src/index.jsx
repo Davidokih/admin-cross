@@ -17,16 +17,16 @@ let persistor = persistStore(Store)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <BrowserRouter>
+    <BrowserRouter>
       <Provider store={ Store }>
       <PersistGate persistor={persistor}>
-        <QueryClientProvider client={queryClient}> */}
+        <QueryClientProvider client={queryClient}>
           <App />
           {/* <ReactQueryDevtools /> */}
-          {/* </QueryClientProvider>
+          </QueryClientProvider>
           </PersistGate>
       </Provider>
-    </BrowserRouter> */}
+    </BrowserRouter>
   </React.StrictMode>
 );
 
