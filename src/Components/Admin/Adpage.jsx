@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Dashboard from "../SigmUpAndSignIn/Dashboard";
 import Adheader from "./Adheader";
 import Sidenav from "./Sidenav";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Merchantrequest from "./Merchantrequest";
 import AdmineRoutes from "../AllRoutes/AdminRoutes"
 
 const Adpage = () => {

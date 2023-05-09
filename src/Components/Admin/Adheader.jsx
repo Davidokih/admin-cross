@@ -5,13 +5,15 @@ import { BiSearch } from "react-icons/bi";
 
 import styled from "styled-components";
 const Adheader = () => {
+  const user = JSON.parse(localStorage.getItem("user"))
+  // console.log(user);
   return (
     <Container>
       <Wrapper>
         <Hold>
           <Account>
             <BiUserCircle fontSize="22px" />
-            <span>Manel</span>
+            <span>{`${user?.firstName} ${user?.lastName}` }</span>
           </Account>
           <BsBellFill fontSize="18px" />
         </Hold>
@@ -29,7 +31,7 @@ const Adheader = () => {
 export default Adheader;
 // const Container =styled.div``
 const Account = styled.div`
-  width: 190px;
+  /* width: 190px; */
   height: 40px;
   border-radius: 20px;
   background-color: #f9d0e4;

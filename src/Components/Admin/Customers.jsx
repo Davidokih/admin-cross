@@ -11,23 +11,12 @@ import OrderPage from './AdminDashboard/OrderPage'
 import { getCoustomers } from '../Api/Api';
 
 const NewSellers = () => {
-
-  const user = JSON.parse(localStorage.getItem("user"));
-  const queryCLient = useQueryClient()
-  
-
-  const userID = user?._id
   const {data} = useQuery({
     queryKey: ["users"],
     queryFn: getCoustomers
   })
     
-    const seller = data?.filter((el) => {
-            if (el.isAdmin === false) {
-                return el
-            }
-        // return el
-    })
+    const seller = data?.filter((el) => el.isAdmin === false)
     console.log(seller)
   const [ currentPage, setCurrentPage ] = useState(0)
   const recordPage = 6
@@ -37,7 +26,6 @@ const NewSellers = () => {
   const changeCPage = ({selected}) => {
     setCurrentPage(selected)
   }
-  // console.log(seller)
 
   const [ query, setQuery ] = useState("")
   const keys = ["firstName", "lastName", "phoneNum"]
@@ -85,7 +73,7 @@ const NewSellers = () => {
               <HoldHead>Name</HoldHead>
             </Th>
             <Th>
-              <HoldHead>Registerd </HoldHead>
+              <HoldHead>Registered </HoldHead>
             </Th>
             <Th>
               <HoldHead>Edit </HoldHead>

@@ -1,7 +1,5 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
-import Private from "../Private";
- import Adpage from "../Admin/Adpage"
  import Adsignup from "../Admin/Adsignup"
  import Settings from "../Admin/Settings"
 import OrderDetail from "../Admin/OrderDetail"
