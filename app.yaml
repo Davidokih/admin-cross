@@ -2,7 +2,7 @@ runtime: nodejs16
 
 handlers:
   # Serve all static files with Cache-Control headers set to 1 day
-    - url: /(.*)
+  - url: /(.*)
     static_files: build/\1
     upload: build/.*
     http_headers:
