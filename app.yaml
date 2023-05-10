@@ -1,13 +1,11 @@
 runtime: nodejs16
 
 handlers:
-  # Serve all static files with Cache-Control headers set to 1 day
   - url: /(.*)
     static_files: build/\1
     upload: build/.*
     http_headers:
       Cache-Control: public, max-age=31536000
-  # Serve all other URLs to index.html to support client-side routing
   - url: /.*
-    static_files: index.html
-    upload: index.html
+    static_files: build/index.html
+    upload: build/index.html
