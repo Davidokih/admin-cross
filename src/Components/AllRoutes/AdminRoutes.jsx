@@ -74,7 +74,6 @@ const AllRoutes = () => {
       ],
     },
   ]);
-
   return element;
 };
 
