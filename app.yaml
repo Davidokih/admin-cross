@@ -7,5 +7,5 @@ handlers:
       Cache-Control: public, max-age=86400
   # Serve all other URLs to index.html to support client-side routing
   - url: /.*
-    static_files: ./index.html
-    upload: ./index.html
+    static_files: index.html
+    upload: index.html
