@@ -1,0 +1,11 @@
+handlers:
+  # Serve all static files with Cache-Control headers set to 1 day
+  - url: /(.*\.(js|css|png|jpg|gif|svg|woff|woff2|ttf|eot|ico))$
+    static_files: build/\1
+    upload: build/.*\.(js|css|png|jpg|gif|svg|woff|woff2|ttf|eot|ico)$
+    http_headers:
+      Cache-Control: public, max-age=86400
+  # Serve all other URLs to index.html to support client-side routing
+  - url: /.*
+    static_files: /index.html
+    upload: /index.html
