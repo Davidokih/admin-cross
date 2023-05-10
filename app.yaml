@@ -1,11 +1,16 @@
 runtime: nodejs16
 
+env_variables:
+  NODE_ENV: production
+
 handlers:
-  - url: /(.*)
-    static_files: build/\1
-    upload: build/.*
-    http_headers:
-      Cache-Control: public, max-age=31536000
-  - url: /.*
-    static_files: build/index.html
-    upload: build/index.html
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+
+skip_files:
+- node_modules/
+- .git/
+- .vscode/
+- package-lock.json
