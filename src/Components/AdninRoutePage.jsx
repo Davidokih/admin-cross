@@ -4,6 +4,7 @@ import AdminRoutes from "./AllRoutes/AdminRoutes"
 import styled from "styled-components";
 import Adheader from "./Admin/Adheader";
 import Sidenav from "./Admin/Sidenav";
+import {Routes, Route} from "react-router-dom"
 
 const AdninRoutePage = () => {
   return (
@@ -13,7 +14,10 @@ const AdninRoutePage = () => {
         <Sidenav />
         <Adheader />
       </Side>
-      <Main>
+        <Main>
+          <Routes>
+            
+          </Routes>
         <AdminRoutes />
         {/* <Merchantrequest />  */}
       </Main>

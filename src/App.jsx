@@ -9,7 +9,7 @@ import AdminOtp from "./Components/Admin/AdminOtp"
 const App = () => {
   return (
     <div>
-      <Routes>
+      <Routes basename="/">
         <Route path="/" element={ <SignInAdmin />} />
         <Route path="/admin-dashboard/*" element={ <AdminPrivate><AdminRoutePage /></AdminPrivate>} />
         <Route path="/login-admin" element={ <SignInAdmin /> } />
