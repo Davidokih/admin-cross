@@ -9,9 +9,5 @@ phase:
       - npm run build
   post_build:
     commands:
-      - rcho Build completed on `successfully`
-artfacts:
-  files:
-    - "**/*"
-  discard-paths: no
-  base-directory: build 
+      - aws s3 cp --recursive ./build s3://codepipeline-eu-north-1-671641659629/Cross-Admin4/
+      - aws cloudfront create-invalidation --distribution-id EBCDGGYOSVD1 --path /\*
