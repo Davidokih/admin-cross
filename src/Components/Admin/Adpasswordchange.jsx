@@ -66,74 +66,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-const Button = styled.button`
-  width: 360px;
-  height: 50px;
-  border: 0px;
-  background-color: #ec00b1;
-  border-radius: 5px;
-  color: white;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  margin: 20px;
-  outline: none;
-`;
-const Error = styled.div`
-  font-size: 15px;
-  font-weight: 700;
-  color: #ff0000;
-`;
-const Icon = styled.div`
-  width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
-const HoldInput = styled.div`
-  width: 350px;
-  height: 40px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10px;
-
-  .PhoneInputInput {
-    width: 300px;
-    height: 30px;
-    outline: none;
-    border: 0px;
-  }
-`;
-const Input = styled.input`
-  width: 100%;
-  height: 30px;
-  outline: none;
-  border: 0px;
-  /* margin-bottom: 5px; */
-  /* padding-left: 10px;
-    padding-right: 10px; */
-`;
-const Name = styled.div`
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 10px;
-`;
-const Hold = styled.div`
-  margin-bottom: 10px;
-`;
-const InputHold = styled.form`
-  width: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px 3px;
-
-  /* background-color: #ec00b1; */
+  /* margin-top: 20px; */
 `;
 
 const Title = styled.div`
@@ -156,10 +89,75 @@ const Text = styled.div`
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  align-items: flex-start;
-  /* background-color: red; */
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  padding: 23px 0;
-  /* border: 1px solid gray; */
+  padding: 50px 0;
+  flex-wrap: wrap;
 `;
+const Button = styled.button`
+    width: 360px;
+    height: 50px;
+    border: 0px;
+    background-color: #ec00b1;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 20px;
+    outline: none;
+`;
+const Error = styled.div`
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff0000;
+`;
+const Icon = styled.div`
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
+const HoldInput = styled.div`
+    width: 350px;
+    height: 40px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+
+    .PhoneInputInput {
+    width: 300px;
+    height: 30px;
+    outline: none;
+    border: 0px;
+  }
+`;
+const Input = styled.input`
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: 0px;
+    /* margin-bottom: 5px; */
+    /* padding-left: 10px;
+    padding-right: 10px; */
+`
+const Name = styled.div`
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+`;
+const Hold = styled.div`
+    margin-bottom: 10px;
+`;
+const InputHold = styled.form`
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+`

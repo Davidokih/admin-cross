@@ -27,7 +27,7 @@ const AllOrders = () => {
   const changeCPage = ({selected}) => {
     setCurrentPage(selected)
   }
-  // console.log(data)
+  console.log(data)
 
   const [ query, setQuery ] = useState("")
   const keys = ["order_No", "delivery_status"]

@@ -47,6 +47,22 @@ const Productpage = ({ avatar, index, name, price, tag, created, quantity, activ
         <HoldHead>{ rejected}</HoldHead>
       </Td>
       }
+       {quantity > 0 &&  <Td>
+        <HoldHead>
+        <Box bg="fff">
+            <Round />
+            <span>ON</span>
+          </Box> 
+        </HoldHead>
+            </Td>}
+           {quantity <= 0 &&  <Td>
+        <HoldHead>
+        <Box bg="">
+                <span>OFF</span>
+                <Round2 />
+          </Box>
+        </HoldHead>
+            </Td>}
             <Td>
               <HoldHead >
                 {" "}

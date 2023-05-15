@@ -45,12 +45,12 @@ const OrderPage = ({ index, order_No, price, created, delivery_status, payment_m
             {firstName && <Td>
               {isSeller ? <UserHold to={`/admin-dashboard/merchant-detail/${id}`}>
                 <span>
-            <Img>{firstName?.charAt(1).toUpperCase() + lastName?.charAt(1).toUpperCase()}</Img>
+            <Img>{firstName?.charAt(0).toUpperCase() + lastName?.charAt(0).toUpperCase()}</Img>
                 </span>
                {firstName +" "+ lastName}
               </UserHold> : <UserHold to={`/admin-dashboard/order-detail/${id}`}>
                 <span>
-            <Img>{firstName?.charAt(1).toUpperCase() + lastName?.charAt(1).toUpperCase()}</Img>
+            <Img>{firstName?.charAt(0).toUpperCase() + lastName?.charAt(0).toUpperCase()}</Img>
                 </span>
                {firstName +" "+ lastName}
               </UserHold>}
@@ -60,7 +60,7 @@ const OrderPage = ({ index, order_No, price, created, delivery_status, payment_m
         <HoldHead>{ quantity}</HoldHead>{" "}
       </Td> }
       {delivery_status &&  <Td>
-        <HoldHead className={`${delivery_status}`}>{ delivery_status}</HoldHead>
+        <NavLink to={`/admin-dashboard/delivery-status/${id}`}><button className={`${delivery_status}`} style={{cursor: "pointer"}}>{ delivery_status}</button></NavLink>
             </Td>}
       { payment_method && <Td>
         <HoldHead>{ payment_method }</HoldHead>
@@ -122,8 +122,7 @@ const OrderPage = ({ index, order_No, price, created, delivery_status, payment_m
                   setEdit(false);
                 }}
               >
-                <NavLink  to="/seller-dashboard/edit-image"><Navs>Edit Image</Navs></NavLink>
-                <NavLink  to="/seller-dashboard/edit-image"><Navs>Edit Context</Navs></NavLink>
+                <NavLink  to={`/admin-dashboard/seller-status/${id}`}><Navs>Update Status</Navs></NavLink>
                 <Navs>Delete</Navs>
               </Menu>
             ) : null}

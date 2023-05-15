@@ -91,7 +91,12 @@ const PassHold = styled.div`
     align-items: flex-end;
     justify-content: flex-end;
     cursor: pointer;
-    width: 360px;
+    width: 90%;
+
+    @media (max-width: 315px){
+        width: 250px;
+        height: 30px;
+    }
 `;
 const AlText = styled.div`
     font-size: 13px;
@@ -104,7 +109,7 @@ const AlText = styled.div`
 `;
 const Button = styled.button`
     width: 360px;
-    height: 50px;
+    height: 40px;
     border: 0px;
     background-color: #ec00b1;
     border-radius: 5px;
@@ -114,6 +119,16 @@ const Button = styled.button`
     cursor: pointer;
     margin: 20px;
     outline: none;
+
+    @media (max-width: 370px){
+        width: 300px;
+        height: 30px;
+        font-size: 16px;
+    }
+    @media (max-width: 315px){
+        width: 250px;
+        height: 30px;
+    }
 `;
 const Error = styled.div`
     font-size: 15px;
@@ -136,6 +151,15 @@ const HoldInput = styled.div`
     align-items: center;
     justify-content: center;
     padding-left: 10px;
+
+    @media (max-width: 370px){
+        width: 300px;
+        height: 30px;
+    }
+    @media (max-width: 315px){
+        width: 250px;
+        height: 30px;
+    }
 `;
 const Input = styled.input`
     width: 100%;
@@ -160,6 +184,10 @@ const InputHold = styled.form`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    @media (max-width: 370px){
+        width: 350px;
+    }
 `
 const Text = styled.div`
     text-align: center;
@@ -175,13 +203,18 @@ const Title = styled.div`
     font-weight: 700;
 `;
 const Wrapper = styled.div`
-    width: 450px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-top: 120px;
     /* border: 1px solid gray; */
+    /* background-color: gold; */
+
+    /* @media (max-width: 370px){
+        width: 90%;
+    } */
 `;
 const Container = styled.div`
     width: 100%;

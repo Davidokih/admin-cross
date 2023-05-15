@@ -16,12 +16,10 @@ const OtpPage = () => {
   const sendOTP = useMutation({
     mutationFn: verifyUser2,
     onSuccess: () => {
-        if (check.isAdmin === true) {
-            navigate("/admin-dashboard")
-        }
+      navigate("/login-admin")
     },
     onError: () => {
-      navigate("/login-admin")
+      alert("Invalid OTP")
     }
   })
 

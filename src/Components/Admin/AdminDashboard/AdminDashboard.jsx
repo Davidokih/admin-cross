@@ -3,8 +3,23 @@ import styled from 'styled-components'
 import AllOrders from './AllOrders'
 import NewSellers from './NewSellers'
 import PendingUploads from './PendingUploads'
+import { useQuery } from '@tanstack/react-query';
+import { getUser } from '../../Api/Api';
+import { orders } from '../../Api/OrderApi';
 
 const AdminDashboard = () => {
+    const {data} = useQuery({
+        queryKey: ["users"],
+        queryFn: getUser
+    })
+    const seller = data?.filter((el) => el.isSeller === true)
+    const {data: filteredData} = useQuery({
+        queryKey: ["orders"],
+        queryFn: orders
+      })
+    const myData = filteredData?.filter((el)=> el.delivery_status === "delivered")
+    const returned = filteredData?.filter((el)=> el.delivery_status === "returned")
+    const cancked = filteredData?.filter((el)=> el.delivery_status === "cancked")
   return (
     <Container>
         <Wrapper>
@@ -15,8 +30,8 @@ const AdminDashboard = () => {
                     <span>:</span>
                     </Head>
                 <Content>
-                    <Amount>5000</Amount>
-                    <Percent>50%</Percent>
+                      <Amount>{myData?.length }</Amount>
+                    {/* <Percent>50%</Percent> */}
                 </Content>
             </Card>
             <Card>
@@ -26,8 +41,8 @@ const AdminDashboard = () => {
                     <span>:</span>
                     </Head>
                 <Content>
-                    <Amount>5000</Amount>
-                    <Percent>50%</Percent>
+                    <Amount>{seller?.length }</Amount>
+                    {/* <Percent>50%</Percent> */}
                 </Content>
             </Card>
             <Card>
@@ -37,8 +52,8 @@ const AdminDashboard = () => {
                     <span>:</span>
                     </Head>
                 <Content>
-                    <Amount>5000</Amount>
-                    <Percent>50%</Percent>
+                    <Amount>{myData?.length }</Amount>
+                    {/* <Percent>50%</Percent> */}
                 </Content>
             </Card>
             <Card>
@@ -48,19 +63,8 @@ const AdminDashboard = () => {
                     <span>:</span>
                     </Head>
                 <Content>
-                    <Amount>5000</Amount>
-                    <Percent>50%</Percent>
-                </Content>
-            </Card>
-            <Card>
-                <Head><span>
-                Total Sales
-                    </span>
-                    <span>:</span>
-                    </Head>
-                <Content>
-                    <Amount>5000</Amount>
-                    <Percent>50%</Percent>
+                    <Amount>{returned?.length }</Amount>
+                    {/* <Percent>50%</Percent> */}
                 </Content>
             </Card>
             <Card>
@@ -70,8 +74,8 @@ const AdminDashboard = () => {
                     <span>:</span>
                     </Head>
                 <Content>
-                    <Amount>5000</Amount>
-                    <Percent>50%</Percent>
+                      <Amount>{ cancked?.length}</Amount>
+                    {/* <Percent>50%</Percent> */}
                 </Content>
             </Card>
         </Wrapper>

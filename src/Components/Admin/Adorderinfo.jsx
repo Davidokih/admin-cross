@@ -5,7 +5,7 @@ import { BiPhone } from "react-icons/bi";
 import { useEffect } from "react";
 import countryData from "../data"
 
-const Adorderinfo = ({email, name, order_No, address,country, phoneNum,shippingFrom,address2}) => {
+const Adorderinfo = ({email, name, order_No, address,country, phoneNum,shippingFrom,address2,avatar}) => {
 
     const [userCoubtry, setCountry] = useState({})
     const [ship, setShip] = useState({})
@@ -15,10 +15,10 @@ const Adorderinfo = ({email, name, order_No, address,country, phoneNum,shippingF
     const check2 = ()=>{
       setShip(countryData?.find((el)=> el.name === shippingFrom))
     }
-    // console.log(userCoubtry)
   
     useEffect(()=>{
       check()
+      check2()
     },[])
     
   return (
@@ -32,7 +32,8 @@ const Adorderinfo = ({email, name, order_No, address,country, phoneNum,shippingF
           <Box>
             {" "}
             <Image>
-              <img src="/Frame 113.png" />
+              {avatar && <img src={avatar} />}
+              {!avatar && <img src="/Frame 113.png" />}
               <span>{name}</span>
               <div>{email}</div>
               {order_No && <nav>{order_No}</nav>}
@@ -54,7 +55,7 @@ const Adorderinfo = ({email, name, order_No, address,country, phoneNum,shippingF
               </Uptop>
              { shippingFrom && <Uptop>
                 <Sales>Country</Sales>
-                <Price>{ship?.flag }</Price>
+                <Price><img src={ship?.flag }/></Price>
               </Uptop>}
               {order_No && <Uptop>
                 <Sales>All order info</Sales>
@@ -106,9 +107,12 @@ const Price = styled.div`
   font-size: 14px;
     color: #68d0f3;
   }
+  img{
+    width: 40px;
+  }
 `;
 const Sales = styled.div`
-  font-weight: 500;
+  font-weight: 700;
   font-size: 14px;
 `;
 const Uptop = styled.div`
@@ -123,7 +127,10 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
-  /* background-color: red; */
+
+  @media (max-width: 650px){
+    border-right: 0px;
+  }
 `;
 const Profile = styled.div`
   padding: 10px 0;
@@ -141,6 +148,10 @@ const Tug = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 650px){
+    flex-direction: column;
+  }
   /* padding: 0 20px; */
 `;
 const Write = styled.div`
@@ -164,18 +175,17 @@ const Hold = styled.div`
   }
 `;
 const Info = styled.div`
-width: 100%;
-/* background-color: gold; */
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-text-align: center;
+  width: 100%;
+  /* background-color: gold; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
   font-weight: 500;
   height: 200px;
 
   font-size: 14px;
-  margin-left: 18px;
   margin-bottom: 18px;
   /* background-color: red; */
 
@@ -224,6 +234,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   border-radius: 2px;
   background-color: #f3f6f8;
+
 `;
 const Container = styled.div`
   width: 100%;

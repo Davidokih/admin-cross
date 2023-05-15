@@ -117,7 +117,5 @@ const Side = styled.div`
   height: 80%;
   /* background-color: #352b1e; */
   padding: 80px 0;
-  @media (max-width: 768px) {
-    display: none;
-  }
+
 `;

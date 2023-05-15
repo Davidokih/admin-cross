@@ -8,48 +8,57 @@ import styled from 'styled-components';
 // const baseURL = "http://localhost:5000";
 const baseURL = "https://crossbackend.onrender.com";
 
-const UpdateStatus = () => {
+const UpdateDeliveryStatus = () => {
 
     const navigate = useNavigate()
     const {id} = useParams()
     const [ statusUpdate, setStatusUpdate ] = useState("")
-    const [ shippingFee, setshippingFee ] = useState(0)
-    const [ rejected, setrejected ] = useState("not rejected")
+    const [ pending_days, setpending_days ] = useState(0)
+    const [ paymentStatus, setpaymentStatus ] = useState("")
     const updateStatus = useMutation({
       mutationKey: [ "products", id ],
-      mutationFn: ({status,rejected,shippingFee}) => {
-        const response = axios.patch(`${baseURL}/api/product/${id}/update`,{status,rejected,shippingFee})
+      mutationFn: ({delivery_status,pending_days,payment_status}) => {
+        const response = axios.patch(`${baseURL}/api/order/${id}/updatestatus`,{delivery_status,pending_days,payment_status})
         return response
         },
         onSuccess: ()=> {
-            navigate("/admin-dashboard/products")
+            navigate("/admin-dashboard/orders")
       }
     })
-  console.log(shippingFee)
+//   console.log(pending_days)
   
     const handleMutate = () => {
-      updateStatus.mutate({status: statusUpdate, rejected: rejected, shippingFee: shippingFee})
+      updateStatus.mutate({delivery_status: statusUpdate, pending_days: pending_days, payment_status:paymentStatus})
     }
   return (
       <Container>
           <select value={statusUpdate} onChange={e=>{setStatusUpdate(e.target.value)}}>
+              <option>Delivery status</option>
               <option>cancled</option>
               <option>pending</option>
               <option>hold</option>
-              <option>rejected</option>
+              <option>delivered</option>
+              <option>failed</option>
+              <option>completed</option>
+              <option>shipped</option>
           </select>
-      { statusUpdate === "rejected" ? <textarea placeholder='reason for rejection' value={ rejected } onChange={ (e) => {
+          <select value={paymentStatus} onChange={e=>{setpaymentStatus(e.target.value)}}>
+              <option>payment status</option>
+              <option>paid</option>
+              <option>pending</option>
+          </select>
+      {/* { statusUpdate === "rejected" ? <textarea placeholder='reason for rejection' value={ rejected } onChange={ (e) => {
         setrejected(e.target.value)
-          }}/> : null}
-     <input placeholder='Shipping Fee' type="number" value={ shippingFee } onChange={ (e) => {
-        setshippingFee(e.target.value)
+          }}/> : null} */}
+     <input placeholder='Pending Days' type="number" value={ pending_days } onChange={ (e) => {
+        setpending_days(e.target.value)
           }}/> 
           <button onClick={handleMutate}>Update Status</button>
     </Container>
   )
 }
 
-export default UpdateStatus;
+export default UpdateDeliveryStatus;
 
 const Container = styled.div`
     width: 100%;

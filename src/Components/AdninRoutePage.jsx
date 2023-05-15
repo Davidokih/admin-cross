@@ -10,9 +10,9 @@ const AdninRoutePage = () => {
   return (
     <div>
       <Container>
+      <Adheader />
       <Side>
         <Sidenav />
-        <Adheader />
       </Side>
         <Main>
           <Routes>
@@ -42,12 +42,12 @@ const Side = styled.div`
   position: fixed;
   z-index: 1111;
   @media (max-width: 768px) {
-    width: 90px;
+    display: none;
   }
   /* position: fixed; */
 `;
 const Main = styled.div`
-  width: calc(100vw - 240px);
+  width: calc(100vw - 250px);
   display: flex;
  
   align-items: center;
@@ -55,9 +55,8 @@ const Main = styled.div`
   justify-content: center;
   position: absolute;
   right: 0px;
-  /* background-color: blue; */
-  @media (max-width: 768px) {
-    /* width: 100%; */
-    display: none;
+
+  @media (max-width: 768px){
+    width: 95%;
   }
 `;

@@ -27,6 +27,7 @@ const SignUp = () => {
         .required("This field cannot be empty"),
       phoneNum: yup.number().required("This field cannot be empty"),
       password: yup.string().required("This field cannot be empty"),
+      isAdmin: yup.boolean(),
       confirmPassword: yup
         .string()
         .oneOf([yup.ref("password"), null], "Password must match"),
@@ -48,7 +49,7 @@ const SignUp = () => {
 
     onSuccess: (res) => {
       console.log(res);
-      navigate("/login-admin");
+      navigate("/otp-admin");
     },
 
     onError: (error) => {
@@ -57,6 +58,7 @@ const SignUp = () => {
   });
 
   const onSubmit = handleSubmit((value) => {
+    value.isAdmin = true
     create.mutate(value);
   });
   return (
@@ -201,106 +203,146 @@ const SignUp = () => {
 
 export default SignUp;
 
-const AlText = styled.div`
-  font-size: 13px;
-  font-weight: 500;
-
-  span {
-    color: #ec00b1;
+const PassHold = styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
     cursor: pointer;
-  }
+    width: 90%;
+
+    @media (max-width: 315px){
+        width: 250px;
+        height: 30px;
+    }
+`;
+const AlText = styled.div`
+    font-size: 13px;
+    font-weight: 500;
+
+    span{
+        color: #ec00b1;
+        cursor: pointer;
+    }
 `;
 const Button = styled.button`
-  width: 360px;
-  height: 50px;
-  border: 0px;
-  background-color: #ec00b1;
-  border-radius: 5px;
-  color: white;
-  font-weight: 600;
-  font-size: 20px;
-  cursor: pointer;
-  margin: 20px;
-  outline: none;
+    width: 360px;
+    height: 40px;
+    border: 0px;
+    background-color: #ec00b1;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 20px;
+    outline: none;
+
+    @media (max-width: 370px){
+        width: 300px;
+        height: 30px;
+        font-size: 16px;
+    }
+    @media (max-width: 315px){
+        width: 250px;
+        height: 30px;
+    }
 `;
 const Error = styled.div`
-  font-size: 15px;
-  font-weight: 700;
-  color: #ff0000;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff0000;
 `;
 const Icon = styled.div`
-  width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 `;
 const HoldInput = styled.div`
-  width: 350px;
-  height: 40px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10px;
+    width: 350px;
+    height: 40px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
 
-  .PhoneInputInput {
+    .PhoneInputInput {
     width: 300px;
     height: 30px;
     outline: none;
     border: 0px;
   }
+
+    @media (max-width: 370px){
+        width: 300px;
+        height: 30px;
+    }
+    @media (max-width: 315px){
+        width: 250px;
+        height: 30px;
+    }
 `;
 const Input = styled.input`
-  width: 100%;
-  height: 30px;
-  outline: none;
-  border: 0px;
-  /* margin-bottom: 5px; */
-  /* padding-left: 10px;
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: 0px;
+    /* margin-bottom: 5px; */
+    /* padding-left: 10px;
     padding-right: 10px; */
-`;
+`
 const Name = styled.div`
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
 `;
 const Hold = styled.div`
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 `;
 const InputHold = styled.form`
-  width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @media (max-width: 370px){
+        width: 350px;
+    }
+`
 const Text = styled.div`
-  text-align: center;
-  font-size: 17px;
-  font-weight: 600;
-  width: 250px;
-  margin-bottom: 20px;
-`;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    width: 250px;
+`
 const Title = styled.div`
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 700;
 `;
 const Wrapper = styled.div`
-  width: 450px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 120px;
-  /* border: 1px solid gray; */
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 120px;
+    /* border: 1px solid gray; */
+    /* background-color: gold; */
+
+    /* @media (max-width: 370px){
+        width: 90%;
+    } */
 `;
 const Container = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { BsBellFill } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
-import { BiSearch } from "react-icons/bi";
+import { FaBars } from "react-icons/fa";
 
 import styled from "styled-components";
+import Sidenav from "./Sidenav";
 const Adheader = () => {
   const user = JSON.parse(localStorage.getItem("user"))
+  const myRef = useRef()
+  const [menuCgabge, setMenuChange] = useState()
+
+  // console.log(cartData)
+  const change = () => {
+    myRef.current.style.left = "0px"
+    setMenuChange(true)
+  }
+  const returnAgain = () => {
+    myRef.current.style.left = "-1000px"
+    setMenuChange(false)
+  }
   // console.log(user);
   return (
+    <>
     <Container>
       <Wrapper>
         <Hold>
@@ -16,20 +30,42 @@ const Adheader = () => {
             <span>{`${user?.firstName} ${user?.lastName}` }</span>
           </Account>
           <BsBellFill fontSize="18px" />
-        </Hold>
-        <SearchHold>
-          <button>
-            <BiSearch fontSize="20px" />
-          </button>
-          <input />
+          </Hold>
+          {
+            menuCgabge ? <SearchHold onClick={returnAgain}>
+            <FaBars size="25px"/>
+          </SearchHold> : <SearchHold onClick={change}>
+          <FaBars size="25px"/>
         </SearchHold>
+          }
       </Wrapper>
-    </Container>
+      </Container>
+      <Side ref={myRef} onClick={returnAgain}>
+        <Sidenav />
+      </Side>
+    </>
   );
 };
 
 export default Adheader;
 // const Container =styled.div``
+const Side = styled.div`
+    display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    width: 230px;
+    flex: 0.8;
+    height: 100vh;
+    background-color: #f262aa;
+    border-top-right-radius: 20px;
+    position: fixed;
+    left: -1000px;
+    z-index: 1111;
+    transition: all .7s ease-in-out;
+  }
+  /* position: fixed; */
+`;
 const Account = styled.div`
   /* width: 190px; */
   height: 40px;
@@ -53,45 +89,25 @@ const Hold = styled.div`
   justify-content: center;
 `;
 const SearchHold = styled.div`
-  width: 340px;
-  height: 40px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  background-color: #f9d0e4;
-  padding: 0 3px;
-  /* justify-content: center; */
-
-  input {
-    /* height: 40px; */
-    width: 350px;
-    outline: none;
-    border: 0;
-    background-color: transparent;
-  }
-  button {
-    width: 40px;
+  display: none;
+  @media (max-width: 768px) {
+    width: 50px;
     height: 40px;
-    border: 0px;
-    outline: none;
     display: flex;
     align-items: center;
-    background-color: transparent;
-  }
-
-  @media (max-width: 660px) {
-    width: 250px;
+    justify-content: center;
+    cursor: pointer;
   }
 `;
 
 const Wrapper = styled.div`
   width: 90%;
-  height: 100%;
   /* border-bottom: 1.9px solid grey; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   /* padding: 0 10px; */
+  /* background-color: gold; */
 `;
 const Container = styled.div`
   width: calc(100% - 230px);
@@ -106,7 +122,8 @@ const Container = styled.div`
   right: 0px;
   top: 0px;
   background-color: white;
-  @media (max-width: 660px) {
-    display: none;
+  z-index: 11;
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;

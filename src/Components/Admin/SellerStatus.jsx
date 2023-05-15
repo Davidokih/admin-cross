@@ -5,51 +5,44 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-// const baseURL = "http://localhost:5000";
-const baseURL = "https://crossbackend.onrender.com";
+const baseURL = "http://localhost:5000";
+// const baseURL = "https://crossbackend.onrender.com";
 
-const UpdateStatus = () => {
+const SellerStatus = () => {
 
     const navigate = useNavigate()
     const {id} = useParams()
-    const [ statusUpdate, setStatusUpdate ] = useState("")
-    const [ shippingFee, setshippingFee ] = useState(0)
-    const [ rejected, setrejected ] = useState("not rejected")
+    const [ status, setstatus ] = useState("")
     const updateStatus = useMutation({
       mutationKey: [ "products", id ],
-      mutationFn: ({status,rejected,shippingFee}) => {
-        const response = axios.patch(`${baseURL}/api/product/${id}/update`,{status,rejected,shippingFee})
+      mutationFn: ({status}) => {
+        const response = axios.patch(`${baseURL}/api/seler/${id}/updateuser`,{status})
         return response
         },
         onSuccess: ()=> {
-            navigate("/admin-dashboard/products")
+            navigate("/admin-dashboard/merchant")
       }
     })
-  console.log(shippingFee)
+//   console.log(pending_days)
   
     const handleMutate = () => {
-      updateStatus.mutate({status: statusUpdate, rejected: rejected, shippingFee: shippingFee})
+      updateStatus.mutate({status: status})
     }
   return (
       <Container>
-          <select value={statusUpdate} onChange={e=>{setStatusUpdate(e.target.value)}}>
+          <select value={status} onChange={e=>{setstatus(e.target.value)}}>
               <option>cancled</option>
               <option>pending</option>
               <option>hold</option>
-              <option>rejected</option>
+              <option>delivered</option>
+              <option>failed</option>
           </select>
-      { statusUpdate === "rejected" ? <textarea placeholder='reason for rejection' value={ rejected } onChange={ (e) => {
-        setrejected(e.target.value)
-          }}/> : null}
-     <input placeholder='Shipping Fee' type="number" value={ shippingFee } onChange={ (e) => {
-        setshippingFee(e.target.value)
-          }}/> 
           <button onClick={handleMutate}>Update Status</button>
     </Container>
   )
 }
 
-export default UpdateStatus;
+export default SellerStatus;
 
 const Container = styled.div`
     width: 100%;

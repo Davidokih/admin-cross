@@ -15,14 +15,14 @@ const OrderDetail = () => {
       queryKey: ["user", id],
       queryFn: ()=>getOneUser(id)
     })
-
+    console.log(data)
     return (
         <Container>
             <Wrapper>
         <Settings>
           Merchant
         </Settings>
-                <Adorderinfo name={ data?.firstName + " " + data?.lastName } email={ data?.email } address={ data?.address } country={ data?.country } phoneNum={ data?.phoneNum } shippingFrom={ data?.shippingFrom} address2={ data?.address2 }/>
+          <Adorderinfo name={ data?.firstName + " " + data?.lastName } email={ data?.email } address={ data?.address } country={ data?.country } phoneNum={ data?.phoneNum } shippingFrom={ data?.shippingFrom } address2={ data?.address2 } avatar={ data?.avatar[0].url} />
       </Wrapper>
            
         <SellerPage />

@@ -13,6 +13,8 @@ import Orders from "../Admin/Orders"
 import ProductCategories from "../Admin/ProductCategories"
 import Categories from "../Admin/Categories"
 import UpdateStatus from "../Admin/UpdateStatus";
+import UpdateDeliveryStatus from "../Admin/UpdateDeliveryStatus"
+import SellerStatus from "../Admin/SellerStatus";
 
 const AllRoutes = () => {
   let element = useRoutes([
@@ -54,6 +56,14 @@ const AllRoutes = () => {
         {
             path: "/update-status/:id",
             element: <UpdateStatus />,
+          },
+        {
+            path: "/delivery-status/:id",
+            element: <UpdateDeliveryStatus />,
+          },
+        {
+            path: "/seller-status/:id",
+            element: <SellerStatus />,
           },
         {
             path: "/product-categories",
