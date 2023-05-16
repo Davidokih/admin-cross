@@ -34,7 +34,7 @@ const SellerStatus = () => {
               <option>cancled</option>
               <option>pending</option>
               <option>hold</option>
-              <option>delivered</option>
+              <option>approved</option>
               <option>failed</option>
           </select>
           <button onClick={handleMutate}>Update Status</button>

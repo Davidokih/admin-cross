@@ -69,7 +69,7 @@ const SignUp = () => {
           <Text>Please enter every necessary information</Text>
           <InputHold onSubmit={onSubmit}>
             <Hold>
-              <Name>Full Name</Name>
+              <Name>First Name</Name>
               <HoldInput
                 style={{
                   border: `${
@@ -77,7 +77,7 @@ const SignUp = () => {
                   }`,
                 }}
               >
-                <Input placeholder="Full Name" {...register("firstName")} />
+                <Input placeholder="First Name" {...register("firstName")} />
               </HoldInput>
               <Error>{errors?.firstName && errors?.firstName?.message}</Error>
             </Hold>
