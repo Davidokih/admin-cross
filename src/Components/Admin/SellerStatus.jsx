@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-const baseURL = "http://localhost:5000";
-// const baseURL = "https://crossbackend.onrender.com";
+// const baseURL = "http://localhost:5000";
+const baseURL = "https://crossbackend.onrender.com";
 
 const SellerStatus = () => {
 
