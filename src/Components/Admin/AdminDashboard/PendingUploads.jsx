@@ -52,7 +52,7 @@ const AllOrders = () => {
         
           <Head>
             <Th>
-              <HoldHead>Order Number </HoldHead>
+              <HoldHead>Tag Number </HoldHead>
             </Th>
             <Th>
               <HoldHead>Country</HoldHead>

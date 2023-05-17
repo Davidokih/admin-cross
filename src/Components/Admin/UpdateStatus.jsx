@@ -33,9 +33,11 @@ const UpdateStatus = () => {
   return (
       <Container>
           <select value={statusUpdate} onChange={e=>{setStatusUpdate(e.target.value)}}>
+              <option>Update Status</option>
               <option>cancled</option>
               <option>pending</option>
               <option>hold</option>
+              <option>approved</option>
               <option>rejected</option>
           </select>
       { statusUpdate === "rejected" ? <textarea placeholder='reason for rejection' value={ rejected } onChange={ (e) => {

@@ -24,7 +24,7 @@ const Uploads = () => {
         <Image src={Pic3 } />
             <span>Electronics</span>
         </Cont>
-        <Cont to="/admin-dashboard/products/foods">
+        <Cont to="/admin-dashboard/products/food">
         <Image src={Pic4 } />
             <span>Foods And Groceries</span>
         </Cont>

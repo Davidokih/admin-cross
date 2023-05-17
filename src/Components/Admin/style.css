@@ -18,6 +18,16 @@
     background-color: rgb(209, 94, 41);
     border-radius: 5px;
 }
+.rejected{
+    padding: 10px 30px;
+    border: 0px;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(209, 41, 41);
+    border-radius: 5px;
+}
 .approved{
     padding: 10px 30px;
     border: 0px;
@@ -25,7 +35,7 @@
     font-size: 18px;
     font-weight: 600;
     color: white;
-    background-color: rgb(89, 209, 41);
+    background-color: rgb(59, 157, 21);
     border-radius: 5px;
 }
 .hold{
@@ -38,7 +48,7 @@
     background-color: rgba(255, 107, 230, 0.877);
     border-radius: 5px;
 }
-.cpmpleted{
+.completed{
     padding: 10px 30px;
     border: 0px;
     outline: none;
