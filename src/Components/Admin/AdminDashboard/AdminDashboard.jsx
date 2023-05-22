@@ -27,16 +27,19 @@ const AdminDashboard = () => {
   return (
     <Container>
         <Wrapper>
-            <Card>
-                <Head><span>
+              <Card>
+                  <Line />
+                 <Hold>
+                  <Head><span>
                 Total Sales/GMV
                     </span>
-                    <span>:</span>
                     </Head>
                 <Content>
                       <Amount>{myData?.length }</Amount>
                     {/* <Percent>50%</Percent> */}
                 </Content>
+                  </Hold>
+                  <Icon>Icon</Icon>
             </Card>
         </Wrapper>
         <AllOrders />
@@ -48,6 +51,10 @@ const AdminDashboard = () => {
 
 export default AdminDashboard
 
+
+const Line = styled.div``
+const Icon = styled.div``
+const Hold = styled.div``
 const Percent = styled.div`
     font-weight: 500;
     font-size: 14px;
@@ -57,8 +64,6 @@ const Amount = styled.div`
     font-size: 20px;
 `
 const Content = styled.div`
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,7 +71,6 @@ const Content = styled.div`
 `
 const Head = styled.div`
     background-color: gold;
-    width: 230px;
     padding: 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -78,12 +82,8 @@ const Head = styled.div`
     }
 `
 const Card = styled.div`
-    width: 250px;
-    height: 200px;
+    /* height: 200px; */
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    flex-direction: column;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     margin: 10px;
 `
