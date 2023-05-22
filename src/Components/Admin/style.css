@@ -3,9 +3,9 @@
     border: 0px;
     outline: none;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
-    background-color: rgb(209, 41, 209);
+    background: linear-gradient(257.68deg, #9747FF -106.22%, #E4DDE3 148.54%);
     border-radius: 5px;
 }
 .cancled{
@@ -13,9 +13,9 @@
     border: 0px;
     outline: none;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
-    background-color: rgb(209, 94, 41);
+    background: linear-gradient(257.68deg, #CC212D -106.22%, #E4DDE3 148.54%);
     border-radius: 5px;
 }
 .rejected{
@@ -23,7 +23,7 @@
     border: 0px;
     outline: none;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
     background-color: rgb(209, 41, 41);
     border-radius: 5px;
@@ -33,7 +33,7 @@
     border: 0px;
     outline: none;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
     background-color: rgb(209, 41, 41);
     border-radius: 5px;
@@ -43,9 +43,9 @@
     border: 0px;
     outline: none;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
-    background-color: rgb(59, 157, 21);
+    background: linear-gradient(257.68deg, #27AE60 -106.22%, #E4DDE3 148.54%);
     border-radius: 5px;
 }
 .hold{
@@ -53,9 +53,9 @@
     border: 0px;
     outline: none;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
-    background-color: rgba(255, 107, 230, 0.877);
+    background: linear-gradient(257.68deg, #EE65CC -106.22%, #E4DDE3 148.54%);
     border-radius: 5px;
 }
 .completed{
@@ -65,7 +65,7 @@
     font-size: 18px;
     font-weight: 600;
     color: white;
-    background-color: rgba(13, 224, 58, 0.877);
+    background: linear-gradient(257.68deg, #27AE60 -106.22%, #E4DDE3 148.54%);
     border-radius: 5px;
 }
 .delivered{
@@ -75,7 +75,7 @@
     font-size: 18px;
     font-weight: 600;
     color: white;
-    background-color: rgba(13, 224, 58, 0.877);
+    background: linear-gradient(257.68deg, #27AE60 -106.22%, #E4DDE3 148.54%);
     border-radius: 5px;
 }
 .shipped{
