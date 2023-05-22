@@ -28,6 +28,16 @@
     background-color: rgb(209, 41, 41);
     border-radius: 5px;
 }
+.failed{
+    padding: 10px 30px;
+    border: 0px;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(209, 41, 41);
+    border-radius: 5px;
+}
 .approved{
     padding: 10px 30px;
     border: 0px;

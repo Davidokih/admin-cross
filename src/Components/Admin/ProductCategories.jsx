@@ -38,7 +38,6 @@ export default Uploads;
 const Image = styled.img`
 
 `
-
 const Cont = styled(NavLink)`
   width: 360px;
   height: 365px;

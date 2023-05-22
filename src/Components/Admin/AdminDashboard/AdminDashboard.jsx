@@ -4,7 +4,7 @@ import AllOrders from './AllOrders'
 import NewSellers from './NewSellers'
 import PendingUploads from './PendingUploads'
 import { useQuery } from '@tanstack/react-query';
-import { getUser } from '../../Api/Api';
+import { getCoustomers, getUser } from '../../Api/Api';
 import { orders } from '../../Api/OrderApi';
 
 const AdminDashboard = () => {
@@ -16,65 +16,25 @@ const AdminDashboard = () => {
     const {data: filteredData} = useQuery({
         queryKey: ["orders"],
         queryFn: orders
+    })
+    const {data: customersData} = useQuery({
+        queryKey: ["users"],
+        queryFn: getCoustomers
       })
     const myData = filteredData?.filter((el)=> el.delivery_status === "delivered")
-    const returned = filteredData?.filter((el)=> el.delivery_status === "returned")
+    const pending = filteredData?.filter((el)=> el.delivery_status === "pending")
     const cancked = filteredData?.filter((el)=> el.delivery_status === "cancked")
   return (
     <Container>
         <Wrapper>
             <Card>
                 <Head><span>
-                Total Sales
+                Total Sales/GMV
                     </span>
                     <span>:</span>
                     </Head>
                 <Content>
                       <Amount>{myData?.length }</Amount>
-                    {/* <Percent>50%</Percent> */}
-                </Content>
-            </Card>
-            <Card>
-                <Head><span>
-                Total No. of Marchants
-                    </span>
-                    <span>:</span>
-                    </Head>
-                <Content>
-                    <Amount>{seller?.length }</Amount>
-                    {/* <Percent>50%</Percent> */}
-                </Content>
-            </Card>
-            <Card>
-                <Head><span>
-                Completed Orders
-                    </span>
-                    <span>:</span>
-                    </Head>
-                <Content>
-                    <Amount>{myData?.length }</Amount>
-                    {/* <Percent>50%</Percent> */}
-                </Content>
-            </Card>
-            <Card>
-                <Head><span>
-                Total No. of Returns
-                    </span>
-                    <span>:</span>
-                    </Head>
-                <Content>
-                    <Amount>{returned?.length }</Amount>
-                    {/* <Percent>50%</Percent> */}
-                </Content>
-            </Card>
-            <Card>
-                <Head><span>
-                Total No. of Cancled
-                    </span>
-                    <span>:</span>
-                    </Head>
-                <Content>
-                      <Amount>{ cancked?.length}</Amount>
                     {/* <Percent>50%</Percent> */}
                 </Content>
             </Card>
