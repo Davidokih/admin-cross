@@ -48,7 +48,7 @@ const AdminDashboard = () => {
                         <span>Total Sales/GMV</span>
                     </Head>
                     <Content>
-                              <Amount>{formatNumber(totalSales) }</Amount>
+                              <Amount>₦{formatNumber(totalSales) }</Amount>
                         {/* <Percent>50%</Percent> */}
                     </Content>
                 </Hold>
