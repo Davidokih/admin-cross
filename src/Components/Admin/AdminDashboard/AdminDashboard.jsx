@@ -36,7 +36,7 @@ const AdminDashboard = () => {
         }
         return number;
       }
-    console.log(totalSales)
+    // console.log(totalSales)
   return (
     <Container>
         <Wrapper>
