@@ -91,7 +91,7 @@ const NewSellers = () => {
         </Head>
         {
             searchData?.map((props,index) => (
-              <OrderPage index={ index } id={ props._id } isSeller={ props.isSeller } order_No={ props.phoneNum } registerd={ moment(props.createdAt).format("D MMM YYYY") } country={ props?.country } items={ props?.product?.length } avatar={ props.avatar[0].url} name={ `${props.firstName} ${props.lastName}`} />
+              <OrderPage index={ index } id={ props._id } isSeller={ props.isSeller } order_No={ props.phoneNum } registerd={ moment(props.createdAt).format("D MMM YYYY") } country={ props?.country } items={ props?.product?.length } avatar={ props?.avatar[0]?.url} name={ `${props.firstName} ${props.lastName}`} />
               // 
             ))
       }

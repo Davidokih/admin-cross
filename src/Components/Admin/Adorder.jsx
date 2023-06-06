@@ -19,7 +19,7 @@ const Adorder = () => {
         <Settings>
           Order <span>{ data?.order_No}</span>
         </Settings>
-        <Adorderinfo name={ data?.firstName + " " + data?.lastName } email={ data?.email } order_No={ data?.order_No } address={ data?.address } country={ data?.country} />
+        <Adorderinfo name={ data?.firstName + " " + data?.lastName } email={ data?.email } order_No={ data?.phone_No } address={ data?.address } country={ data?.country} />
       </Wrapper>
     </Container>
   );

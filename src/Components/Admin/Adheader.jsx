@@ -8,7 +8,8 @@ import Sidenav from "./Sidenav";
 const Adheader = () => {
   const user = JSON.parse(localStorage.getItem("user"))
   const myRef = useRef()
-  const [menuCgabge, setMenuChange] = useState()
+  const [ menuCgabge, setMenuChange ] = useState()
+  const [add, setAdd] = useState('')
 
   // console.log(cartData)
   const change = () => {
@@ -29,8 +30,21 @@ const Adheader = () => {
             <BiUserCircle fontSize="22px" />
             <span>{`${user?.firstName} ${user?.lastName}` }</span>
           </Account>
-          <BsBellFill fontSize="18px" />
+            <Div
+              onClick={()=> setAdd('display_notification')}
+            ><BsBellFill fontSize="18px" /> <span>1</span></Div>
           </Hold>
+          <Menu className={ `${add}` } onClick={ () => setAdd('') }>
+            <NavHold>
+              <Navs>
+                <Image />
+                <Content>
+                  <Text cl="black">Notifications</Text>
+                  <Text cl="#8e959b">24 hours ago</Text>
+                </Content>
+              </Navs>
+            </NavHold>
+          </Menu>
           {
             menuCgabge ? <SearchHold onClick={returnAgain}>
             <FaBars size="25px"/>
@@ -48,7 +62,63 @@ const Adheader = () => {
 };
 
 export default Adheader;
-// const Container =styled.div``
+
+const Content = styled.div``
+const Image = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: gold;
+  border-radius: 50%;
+  margin-left: 13px;
+  
+`;
+const Navs = styled.div`
+  display: flex;
+  align-items: center;
+  height: 60px;
+  cursor: pointer;
+  opacity: 0px;
+  
+  :hover{
+    transition: 350ms ease-in-out;
+    background-color: #e4e4e4;
+    opacity: 1px;
+  }
+`
+const NavHold = styled.div`
+  overflow-y: auto;
+`
+const Text = styled.div`
+  margin: 0 10px;
+  font-weight: 500;
+
+  color: ${({ cl }) => cl};
+`
+const Menu = styled.div`
+  display: none;
+`;
+const Div = styled.div`
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  span{
+    background-color: red;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    position: relative;
+    bottom: 7px;
+    right: 10px;
+  }
+`;
 const Side = styled.div`
     display: none;
 
@@ -102,12 +172,53 @@ const SearchHold = styled.div`
 
 const Wrapper = styled.div`
   width: 90%;
-  /* border-bottom: 1.9px solid grey; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 0 10px; */
-  /* background-color: gold; */
+
+  .display_notification{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 330px;
+    background-color: #fff;
+    /* background-color: gold; */
+    position: absolute;
+    top: 70px;
+    left: 140px;
+    border-radius: 5px;
+    z-index: 111;
+    /* overflow: hidden; */
+
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+
+    
+  }
+  .display_notification::before{
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: -150px;
+    top: -70px;
+    z-index: -1;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    /* background-color: gold; */
+  }
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+  }
+
 `;
 const Container = styled.div`
   width: calc(100% - 230px);

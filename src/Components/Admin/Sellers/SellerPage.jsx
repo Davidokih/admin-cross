@@ -25,7 +25,7 @@ const Products = () => {
   const changeCPage = ({selected}) => {
     setCurrentPage(selected)
   }
-  console.log(data)
+  // console.log(data)
 
   const [ query, setQuery ] = useState("")
   // console.log(query)

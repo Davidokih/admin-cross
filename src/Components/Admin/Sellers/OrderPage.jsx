@@ -14,10 +14,8 @@ const OrderPage = ({ avatar, index, order_No, price, created, delivery_status, p
   const check = ()=>{
     setCountry(countryData?.find((el)=> el.name === country))
   }
-  const productData = qty?.filter((el)=> el.sellerID === id)
-  // console.log(id)
-  // console.log(productData)
 
+  var nf = Intl.NumberFormat()
   useEffect(()=>{
     check()
   },[])
@@ -91,16 +89,11 @@ const OrderPage = ({ avatar, index, order_No, price, created, delivery_status, p
             </Td>}
       {qty && <Td>
         { " " }
-        { productData?.map((el => (
-          <HoldHead>{ el.qty}</HoldHead>
-        )))}
-        
+          <HoldHead>{ qty}</HoldHead>
             </Td>}
             {price && <Td>
         { " " }
-        { productData?.map((el => (
-          <HoldHead>{ el.price}</HoldHead>
-        )))}
+          <HoldHead>{ nf.format(price)}</HoldHead>
         
             </Td>}
           

@@ -44,16 +44,6 @@ const AllOrders = () => {
       <Container>
           <Header>
             <Text>Transactions</Text>
-            {/* <SerachHold>
-          <input
-              placeholder="Search by name or brand"
-              value={ query }
-              onChange={e=> setQuery(e.target.value)}
-          />
-            <button onClick={search}>
-            <BiSearch />
-            </button>
-        </SerachHold> */}
           </Header>
       <Wrapper>
       
@@ -85,7 +75,11 @@ const AllOrders = () => {
         </Head>
         {
             currentPageData?.map((props,index) => (
-              <OrderPage index={ index } key={ index } delivery_status={ props.delivery_status } order_No={ props.order_No } created={ moment(props.createdAt).format("D MMM YYYY") } payment_method={ props.payment_method } pending_days={ props.pending_days } price={ props.products} qty={ props?.products } id={id } payment_status={props.payment_status}/>
+              <OrderPage index={ index } key={ index } delivery_status={ props.delivery_status } order_No={ props.order_No } created={ moment(props.createdAt).format("D MMM YYYY") } payment_method={ props.payment_method } pending_days={ props.pending_days } price={ props?.products?.filter((el) => el.sellerID === id).reduce((total, product) => {
+                return total + (product.price * product.qty);
+              }, 0)} qty={ props?.products?.filter((el) => el.sellerID === id).reduce((total, product) => {
+                return total +  product.qty;
+              }, 0) } id={id } payment_status={props.payment_status}/>
             ))
         }
         </Buttom>
