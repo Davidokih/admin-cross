@@ -5,13 +5,39 @@ import { FaBars } from "react-icons/fa";
 
 import styled from "styled-components";
 import Sidenav from "./Sidenav";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { orders } from "../Api/OrderApi";
+import moment from 'moment'
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+const baseURL = "https://crossbackend.onrender.com";
+
 const Adheader = () => {
   const user = JSON.parse(localStorage.getItem("user"))
+  const navigate = useNavigate()
   const myRef = useRef()
   const [ menuCgabge, setMenuChange ] = useState()
   const [add, setAdd] = useState('')
 
-  // console.log(cartData)
+  const {data} = useQuery({
+    queryKey: ["orders"],
+    queryFn: orders
+  })
+  const updateStatus = useMutation({
+    mutationKey: [ "order"],
+    mutationFn: async ({id,notification}) => {
+      await axios.patch(`${baseURL}/api/order/${id}/updatestatus`, { notification }).then(() => {
+        navigate(`/order-detail/${id}`)
+      })
+      }
+  })
+
+  const handleMutate = (id) => {
+    updateStatus.mutate({id, notification: ''})
+  }
+  
+  const notification_Data = data?.filter((el) => el.notification === 'new')
+  
   const change = () => {
     myRef.current.style.left = "0px"
     setMenuChange(true)
@@ -20,7 +46,6 @@ const Adheader = () => {
     myRef.current.style.left = "-1000px"
     setMenuChange(false)
   }
-  // console.log(user);
   return (
     <>
     <Container>
@@ -32,17 +57,20 @@ const Adheader = () => {
           </Account>
             <Div
               onClick={()=> setAdd('display_notification')}
-            ><BsBellFill fontSize="18px" /> <span>1</span></Div>
+            ><BsBellFill fontSize="18px" /> { notification_Data == 0 ? null : <span>{ notification_Data?.length}</span>}</Div>
           </Hold>
           <Menu className={ `${add}` } onClick={ () => setAdd('') }>
             <NavHold>
-              <Navs>
-                <Image />
+              { notification_Data?.map((props,index) => (
+                <Navs key={index} onClick={()=> handleMutate(props._id)}>
+                  { props.avatar && <Image src={ props?.avatar[ 0 ]?.url } /> }
+                  {!props.avatar && <Img>{props.firstName?.charAt(0).toUpperCase() + props.lastName?.charAt(0).toUpperCase()}</Img>}
                 <Content>
-                  <Text cl="black">Notifications</Text>
-                  <Text cl="#8e959b">24 hours ago</Text>
+                    <Text cl="black">{`${props.firstName} ${props.lastName}`}</Text>
+                    <Text cl="#8e959b">{ moment(props.createdAt).format("Do MMM YYYY - hh:mma") }</Text>
                 </Content>
               </Navs>
+              ))}
             </NavHold>
           </Menu>
           {
@@ -63,6 +91,17 @@ const Adheader = () => {
 
 export default Adheader;
 
+const Img = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: #b7b7b7;
+  border-radius: 50%;
+  margin-left: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const Content = styled.div``
 const Image = styled.div`
   width: 40px;
@@ -70,7 +109,6 @@ const Image = styled.div`
   background-color: gold;
   border-radius: 50%;
   margin-left: 13px;
-  
 `;
 const Navs = styled.div`
   display: flex;
