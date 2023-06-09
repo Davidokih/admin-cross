@@ -57,7 +57,7 @@ const Adheader = () => {
           </Account>
             <Div
               onClick={()=> setAdd('display_notification')}
-            ><BsBellFill fontSize="18px" /> { notification_Data == 0 ? null : <span>{ notification_Data?.length}</span>}</Div>
+            ><BsBellFill fontSize="18px" /> { notification_Data?.length == 0 ? null : <span>{ notification_Data?.length}</span>}</Div>
           </Hold>
           <Menu className={ `${add}` } onClick={ () => setAdd('') }>
             <NavHold>
